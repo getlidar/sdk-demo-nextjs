@@ -6,7 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "helika-sdk": "^0.1.11",
+    "helika-sdk": "^0.1.13",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"

@@ -2,26 +2,22 @@ import styles from '../styles/Home.module.css';
 import { useState } from "react";
 
 import Helika from "helika-sdk";
-import { BaseURLOptions } from 'helika-sdk';
 
 export default function Home() {
 
-  const [sdk,setSdk] = useState(undefined);
-  const [apiKey,setApiKey] = useState('');
+  const [sdk, setSdk] = useState(undefined);
+  const [apiKey, setApiKey] = useState('');
 
-  async function initiateSdk(){
+  async function initiateSdk() {
     if (!apiKey || apiKey.trim()?.length < 10) {
       console.error('Must have valid API Key');
       return;
     }
-    const helikaSDK = new Helika.EVENTS({
-      apiKey: apiKey,
-      baseUrlOption: BaseURLOptions.EVENTS_DEV
-    });
+    const helikaSDK = new Helika.EVENTS(apiKey, Helika.EventsBaseURL.EVENTS_DEV);
     setSdk(helikaSDK);
   }
 
-  async function sendEvent(){
+  async function sendEvent() {
 
     if (!sdk) {
       console.error('You must initiate the sdk first');
@@ -37,7 +33,7 @@ export default function Home() {
       }
     }];
 
-    sdk.createEvent('321',events);
+    await sdk.createEvent(events);
   }
 
   return (
@@ -48,19 +44,19 @@ export default function Home() {
       <input
         type='text'
         value={apiKey}
-        onChange={(e)=>{
+        onChange={(e) => {
           setApiKey(e.target.value);
         }}
       />
       <button
         onClick={initiateSdk}
-        style={{margin:'1em 0 0 0'}}
+        style={{ margin: '1em 0 0 0' }}
       >
         Inititate SDK
       </button>
       <button
         onClick={sendEvent}
-        style={{margin:'1em 0 0 0'}}
+        style={{ margin: '1em 0 0 0' }}
       >
         Send Event
       </button>
