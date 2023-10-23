@@ -32,12 +32,12 @@ export default function Home() {
       game_id: 'SDK Example Project',
       event_type: 'Test',
       event: {
-        id: 1,
+        id: 2,
         info: 'From Example Project, send event button'
       }
     }];
 
-    sdk.createEvent('321',events);
+    sdk.createEvent(events);
   }
 
   return (
