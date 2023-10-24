@@ -1,5 +1,8 @@
+"use client"
+
 import styles from '../styles/Home.module.css';
 import { useState } from "react";
+import '../styles/global.css'
 
 import Helika, { EventsBaseURL } from "helika-sdk";
 
@@ -7,14 +10,17 @@ export default function Home() {
 
   const [sdk, setSdk] = useState(undefined);
   const [apiKey, setApiKey] = useState('');
+  const [resp, setResp] = useState('');
 
   async function initiateSdk() {
     if (!apiKey || apiKey.trim()?.length < 10) {
-      console.error('Must have valid API Key');
+      setResp('Must enter a valid API Key.');
+      console.error('Must enter a valid API Key.');
       return;
     }
     const helikaSDK = new Helika.EVENTS(apiKey, EventsBaseURL.EVENTS_DEV);
     setSdk(helikaSDK);
+    setResp('SDK Session initiated, session create event sent. Check network to view payload/response.');
   }
 
   async function sendEvent() {
@@ -33,12 +39,15 @@ export default function Home() {
       }
     }];
 
-    await sdk.createEvent(events);
+    let response = await sdk.createEvent(events);
+
+    setResp(`Event sent: ${JSON.stringify(events[0])}`);
   }
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.title}>Helika SDK Test</div>
+      <div className={styles.mbHalfEm}>
         API Key:
       </div>
       <input
@@ -60,6 +69,15 @@ export default function Home() {
       >
         Send Event
       </button>
+
+      <div className={styles.myHalf}>Result:</div>
+
+      <textarea
+        style={{maxWidth: '50vw', width:'100%'}}
+        rows={5}
+        value={resp}
+        onChange={()=>{}}
+      />
     </div>
   );
 }
