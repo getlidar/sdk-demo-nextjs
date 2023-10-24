@@ -1,10 +1,10 @@
 .container {
   min-height: 100vh;
-  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: black;
 }
 
 .title a {
@@ -82,6 +82,14 @@
 
 .logo {
   height: 1em;
+}
+
+.mbHalfEm {
+  margin-bottom: 0.5em;
+}
+
+.myHalf {
+  margin: 2em 0 1em 0;
 }
 
 @media (max-width: 600px) {
