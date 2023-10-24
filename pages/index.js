@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css';
 import { useState } from "react";
 
-import Helika from "helika-sdk";
+import Helika, { EventsBaseURL } from "helika-sdk";
 
 export default function Home() {
 
@@ -13,7 +13,7 @@ export default function Home() {
       console.error('Must have valid API Key');
       return;
     }
-    const helikaSDK = new Helika.EVENTS(apiKey, Helika.EventsBaseURL.EVENTS_DEV);
+    const helikaSDK = new Helika.EVENTS(apiKey, EventsBaseURL.EVENTS_DEV);
     setSdk(helikaSDK);
   }
 
