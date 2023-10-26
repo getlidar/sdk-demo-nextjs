@@ -19,6 +19,7 @@ export default function Home() {
       return;
     }
     const helikaSDK = new Helika.EVENTS(apiKey, EventsBaseURL.EVENTS_DEV);
+    await helikaSDK.startSession();
     setSdk(helikaSDK);
     setResp('SDK Session initiated, session create event sent. Check network to view payload/response.');
   }
