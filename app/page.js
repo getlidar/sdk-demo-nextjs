@@ -18,8 +18,9 @@ export default function Home() {
       console.error('Must enter a valid API Key.');
       return;
     }
-    const helikaSDK = new Helika.EVENTS(apiKey, EventsBaseURL.EVENTS_DEV);
+    const helikaSDK = new Helika.EVENTS(apiKey, 'paul_test',EventsBaseURL.EVENTS_DEV);
     setSdk(helikaSDK);
+    helikaSDK.startSession()
     setResp('SDK Session initiated, session create event sent. Check network to view payload/response.');
   }
 
@@ -35,7 +36,8 @@ export default function Home() {
       event_type: 'Test',
       event: {
         id: 1,
-        info: 'From Example Project, send event button'
+        info: 'From Example Project, send event button',
+        session_id: '87'
       }
     }];
 

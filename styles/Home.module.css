@@ -1,3 +1,6 @@
+.openSans {
+  font-family: 'Open Sans';
+}
 .container {
   min-height: 100vh;
   display: flex;
