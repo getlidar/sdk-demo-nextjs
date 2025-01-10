@@ -249,14 +249,6 @@ export default function Home() {
         Inititate SDK
       </button>
       <button
-        onClick={()=>{
-          sdk.crea
-        }}
-        style={{ margin: '1em 0 0 0' }}
-      >
-        Create Session
-      </button>
-      <button
         onClick={sendEvent}
         style={{ margin: '1em 0 0 0' }}
       >
